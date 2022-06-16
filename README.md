@@ -35,8 +35,27 @@ As a user:
 
 1. When the app starts, I can see all plants.
 2. I can add a new plant to the page by submitting the form.
+    -state with form 
+    -input, onChange
+    -get the values
+    -update the state
+    -fetch POST
+    
+    -update the plants state with the newly added plan on the PlantPage
+    -set the form state back to the empty form
+
+    -onSubmit
 3. I can mark a plant as "sold out".
 4. I can search for plants by their name and see a filtered list of plants.
+    -get the search term
+    -decide where to place the search state
+    -update the search state with the new search
+    -filter the plants state that matches the search input
+    -`.toLowerCase()`
+    -plant.name
+    -`.includes`
+    -store this in displayedPlant
+    -update the props 
 
 ### Endpoints for Core Deliverables
 
