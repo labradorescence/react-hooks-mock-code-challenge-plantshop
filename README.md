@@ -35,16 +35,22 @@ As a user:
 
 1. When the app starts, I can see all plants.
 2. I can add a new plant to the page by submitting the form.
-    -state with form 
-    -input, onChange
-    -get the values
-    -update the state
-    -fetch POST
-    
-    -update the plants state with the newly added plan on the PlantPage
-    -set the form state back to the empty form
+    Storing the user's input data in the state
+    -Declare the state for form `const [form, setForm] = useState({ key1: "", key2: "" })`
+    -In JSX, input, add the `onChange` with `handleChange` function `<input type="text" name="name" onChange={handleChange} />`
+    -declare the `handleChange` function 
+    -get the values from the input `<input type="text" name="name" onChange={handleChange} value={form.name}/>`
+    -update the `form` state using the `handleChange` and the `setForm`, setter function
 
-    -onSubmit
+    Fetch POST the user input data to the DB
+    -fetch POST, go to MDN and copy and past the post fetch request
+    -In JSX, on form, add the onSubmit event then declare `handleSubmit` function `<form onSubmit = {handleSubmit}>`
+    -send the event to the parent prop with the new `form` state using the setter function prop but concatenate the existing data with the new data
+    -on the parent component, update the state with the newly added data
+
+    set the form back to default
+    -set the form state back to the default form
+    
 3. I can mark a plant as "sold out".
 4. I can search for plants by their name and see a filtered list of plants.
     -get the search term
