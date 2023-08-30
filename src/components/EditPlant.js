@@ -1,6 +1,6 @@
-import {useState} from "react";
+import { useState, useEffect } from "react";
 
-function NewPlantForm( {API, onHandlingSubmit} ) {
+function EditPlant( { API, plantId, completeEditing, onEditingPlant} ) {
 
   const initialForm = {
     name:"",
@@ -10,6 +10,14 @@ function NewPlantForm( {API, onHandlingSubmit} ) {
 
   const [ formData, setFormData ] = useState(initialForm)
 
+  useEffect(() => {
+    fetch(`${API}/${plantId}`)
+        .then(resp => resp.json())
+        .then(data => {
+            setFormData(data)
+        })
+    }, [plantId])
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({...formData, [name]: value})
@@ -18,29 +26,32 @@ function NewPlantForm( {API, onHandlingSubmit} ) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch(API, {
-      method: "POST",
+    fetch(`${API}/${plantId}`, {
+      method: "PATCH",
       headers: {
         "Content-Type" : "application/json"
       },
       body: JSON.stringify(formData)
     })
     .then(resp => resp.json())
-    .then(data => onHandlingSubmit(data))
+    .then(data => onEditingPlant(data))
 
     setFormData(initialForm)
+    completeEditing()
   }
 
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
       <form onSubmit={handleSubmit}>
+
         <input 
           type="text" 
           name="name" 
           placeholder="Plant name"
           onChange={handleChange}
           value={formData.name} />
+
         <input 
           type="text" 
           name="image" 
@@ -48,6 +59,7 @@ function NewPlantForm( {API, onHandlingSubmit} ) {
           onChange={handleChange}
           value={formData.image}
           />
+
         <input 
           type="number" 
           name="price" 
@@ -56,10 +68,11 @@ function NewPlantForm( {API, onHandlingSubmit} ) {
           onChange={handleChange}
           value={FormData.price}
           />
+          
         <button type="submit">Add Plant</button>
       </form>
     </div>
   );
 }
 
-export default NewPlantForm;
+export default EditPlant;

@@ -2,9 +2,9 @@
   "plants": [
     {
       "id": 1,
-      "name": "Aloe",
-      "image": "./images/aloe.jpg",
-      "price": 15.99
+      "name": "Ric Rac Cactus",
+      "image": "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1650051054-screen-shot-2022-04-15-at-3-29-46-pm-1650051019.png?crop=1.00xw:0.774xh;0.00160xw,0.223xh&resize=768:*",
+      "price": "30"
     },
     {
       "id": 2,
@@ -41,6 +41,12 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
+    },
+    {
+      "name": "Ric Rac Cactus",
+      "image": "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1650051054-screen-shot-2022-04-15-at-3-29-46-pm-1650051019.png?crop=1.00xw:0.774xh;0.00160xw,0.223xh&resize=768:*",
+      "price": "40",
+      "id": 8
     }
   ]
 }
